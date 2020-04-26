@@ -72,93 +72,108 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 			for (let i = 0; i < country.length; i++) {
 				let countryCode = country[i]['alpha-2'];
 				let countryName = country[i].name;
-				let countryURL = `${baseURL}?source=jhu&country_code=${countryCode}&timelines=false`;
-				let result = await getJSON(encodeURI(countryURL));
-				if (i == 0) {
-					agent.add('According to my data, ');
-				}
-
-				if (i >= 1) {
-					agent.add(`Also, `);
-				}
-
-				if (type.length >= 3) {
-					agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${countryName}`);
-					return;
-				}
-
-				for (let j = 0; j < type.length; j++) {
-					if (j >= 1) {
-						agent.add(`In addition, `);
+				try {
+					let countryURL = `${baseURL}?source=jhu&country_code=${countryCode}&timelines=false`;
+					let result = await getJSON(encodeURI(countryURL));
+					if (i == 0) {
+						agent.add('According to my data, ');
 					}
 
-					switch (type[j]) {
-						case 'confirmed':
-							agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
-							break;
-						case 'deaths':
-							agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
-							break;
-						case 'recovered':
-							agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
-							break;
-						default: //all conditions 
-							agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+					if (i >= 1) {
+						agent.add(`Also, `);
 					}
+
+					if (type.length >= 3) {
+						agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${countryName}`);
+						return;
+					}
+
+					for (let j = 0; j < type.length; j++) {
+						if (j >= 1) {
+							agent.add(`In addition, `);
+						}
+
+						switch (type[j]) {
+							case 'confirmed':
+								agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
+								break;
+							case 'deaths':
+								agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
+								break;
+							case 'recovered':
+								agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
+								break;
+							default: //all conditions 
+								agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+						}
+					}
+					agent.add(`in ${countryName}.`);
+				} catch (error) {
+					console.log(`Error in country data:`, error);
 				}
-				agent.add(`in ${countryName}.`);
 			}
 			return response;
 		} else if (county && county.length && state && state.length) {
-			let response;
+			let response, countyName;
 			for (let i = 0; i < county.length; i++) {
-				county[i] = county[i].replace(/ County| Parish/gi, "");
-				let countyURL;
-				if (state.length === county.length){
-					countyURL = `${baseURL}?source=csbs&province=${state[i]}&county=${county[i]}&timelines=false`;
-				} else {
-					countyURL = `${baseURL}?source=csbs&province=${state[i]}&county=${county[i]}&timelines=false`;
-				}
-				let result = await getJSON(encodeURI(countyURL));
-				if (i == 0) {
-					agent.add('According to my data, ');
-				}
-
-				if (i >= 1) {
-					agent.add(`Also, `);
-				}
-
-				if (type.length >= 3) {
-					agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${county[i]}`);
-					return;
-				}
-
-				for (let j = 0; j < type.length; j++) {
-					if (j >= 1) {
-						agent.add(`In addition, `);
+				try {
+					countyName = county[i];
+					county[i] = county[i].replace(/ County| Parish/gi, "");
+					let countyURL;
+					if (state.length === county.length) {
+						countyURL = `${baseURL}?source=csbs&province=${state[i]}&county=${county[i]}&timelines=false`;
+					} else {
+						countyURL = `${baseURL}?source=csbs&province=${state[0]}&county=${county[i]}&timelines=false`;
 					}
-
-					switch (type[j]) {
-						case 'confirmed':
-							agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
-							break;
-						case 'deaths':
-							agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
-							break;
-						case 'recovered':
-							agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
-							break;
-						default: //all conditions 
-							agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+					let result = await getJSON(encodeURI(countyURL));
+					if (i == 0) {
+						agent.add('According to my data, ');
 					}
+	
+					if (i >= 1) {
+						agent.add(`Also, `);
+					}
+	
+					if (type.length >= 3) {
+						agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${county[i]}`);
+						return;
+					}
+	
+					for (let j = 0; j < type.length; j++) {
+						if (j >= 1) {
+							agent.add(`In addition, `);
+						}
+	
+						switch (type[j]) {
+							case 'confirmed':
+								agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
+								break;
+							case 'deaths':
+								agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
+								break;
+							case 'recovered':
+								agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
+								break;
+							default: //all conditions 
+								agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+						}
+					}
+					if (state.length === county.length) {
+						agent.add(`in ${countyName}, ${state[i]}.`);
+					} else {
+						agent.add(`in ${countyName}, ${state[0]}.`);
+					}
+					
+				} catch (error) {
+					console.log(`Error in county and state data:`, error);
 				}
-				agent.add(`in ${county[i]} County, ${state[i]}.`);
 			}
 			return response;
 		} else if (state && state.length) {
 			let response;
 			for (let i = 0; i < state.length; i++) {
-				let stateURL = `${baseURL}?source=csbs&province=${state[i]}&timelines=false`;
+				try {
+					let stateURL = `${baseURL}?source=csbs&province=${state[i]}&timelines=false`;
 				let result = await getJSON(encodeURI(stateURL));
 				if (i == 0) {
 					agent.add('According to my data, ');
@@ -193,12 +208,16 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 					}
 				}
 				agent.add(`in ${state[i]}.`);
+				} catch (error) {
+					console.log(`Error in state data:`, error);
+				}
 			}
 			return response;
 		} else if (county && county.length) {
 			let response;
 			for (let i = 0; i < county.length; i++) {
-				county[i] = county[i].replace(/ County| Parish/gi, "");
+				try {
+					county[i] = county[i].replace(/ County| Parish/gi, "");
 				let countyURL = `${baseURL}?source=csbs&county=${county[i]}&timelines=false`;
 				let result = await getJSON(encodeURI(countyURL));
 				if (i == 0) {
@@ -234,6 +253,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 					}
 				}
 				agent.add(`in ${county[i]} County.`);
+				} catch (error) {
+					console.log(`Error in county data:`, error);
+				}
 			}
 			return response;
 		}
