@@ -76,13 +76,17 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 					agent.add('According to my data, ');
 				}
 
+				if (i >= 1) {
+					agent.add(`Also, `);
+				}
+
 				if (type.length >= 3) {
 					agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${state[i]}`);
 					return;
 				}
 
 				for (let j = 0; j < type.length; j++) {
-					if (j == 1) {
+					if (j >= 1) {
 						agent.add(`In addition, `);
 					}
 
@@ -114,13 +118,17 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 					agent.add('According to my data, ');
 				}
 
+				if (i >= 1) {
+					agent.add(`Also, `);
+				}
+
 				if (type.length >= 3) {
 					agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${countryName}`);
 					return;
 				}
 
 				for (let j = 0; j < type.length; j++) {
-					if (j == 1) {
+					if (j >= 1) {
 						agent.add(`In addition, `);
 					}
 
