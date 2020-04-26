@@ -26,7 +26,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
 	function worldwideLatestStats(agent) {
 		const type = agent.parameters.type;
-		return getJSON('https://coronavirus-tracker-api.herokuapp.com/v2/latest?source=jhu').then(result => {
+		return getJSON('https://coronavirus-tracker-api.ruizlab.org/v2/latest?source=jhu').then(result => {
 			agent.add('According to my data, ');
 			if (type.length >= 3) {
 				agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19.`);
@@ -53,14 +53,101 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 				}
 
 			}
-    }).catch(err => {
+		}).catch(err => {
 			console.log(err);
 		});
-  }
+	}
 
-let intentMap = new Map();
-intentMap.set('Default Welcome Intent', welcome);
-intentMap.set('Default Fallback Intent', fallback);
-intentMap.set('WorldWide Latest Stats', worldwideLatestStats);
-agent.handleRequest(intentMap);
+	async function locationLatestStats(agent) {
+		const type = agent.parameters.type;
+		const country = agent.parameters.country;
+		const state = agent.parameters['geo-state'];
+		const city = agent.parameters['geo-city'];
+		const county = agent.parameters.county;
+		const baseURL = `https://coronavirus-tracker-api.ruizlab.org/v2/locations`;
+		console.log(agent.parameters);
+
+		if (state && state.length) {
+			let response;
+			for (let i = 0; i < state.length; i++) {
+				let stateURL = `${baseURL}?source=csbs&province=${state[i]}&timelines=false`;
+				let result = await getJSON(stateURL);
+				if (i == 0) {
+					agent.add('According to my data, ');
+				}
+
+				if (type.length >= 3) {
+					agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${state[i]}`);
+					return;
+				}
+
+				for (let j = 0; j < type.length; j++) {
+					if (j == 1) {
+						agent.add(`In addition, `);
+					}
+
+					switch (type[j]) {
+						case 'confirmed':
+							agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
+							break;
+						case 'deaths':
+							agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
+							break;
+						case 'recovered':
+							agent.add(`There are currentlty ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
+							break;
+						default: //all conditions 
+							agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+					}
+				}
+				agent.add(`in ${state[i]}.`);
+			}
+			return response;
+		} else if (country && country.length) {
+			let response;
+			for (let i = 0; i < country.length; i++) {
+				let countryCode = country[i]['alpha-2'];
+				let countryName = country[i].name;
+				let countryURL = `${baseURL}?source=jhu&country_code=${countryCode}&timelines=false`;
+				let result = await getJSON(countryURL);
+				if (i == 0) {
+					agent.add('According to my data, ');
+				}
+
+				if (type.length >= 3) {
+					agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${countryName}`);
+					return;
+				}
+
+				for (let j = 0; j < type.length; j++) {
+					if (j == 1) {
+						agent.add(`In addition, `);
+					}
+
+					switch (type[j]) {
+						case 'confirmed':
+							agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
+							break;
+						case 'deaths':
+							agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
+							break;
+						case 'recovered':
+							agent.add(`There are currentlty ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
+							break;
+						default: //all conditions 
+							agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+					}
+				}
+				agent.add(`in ${countryName}.`);
+			}
+			return response;
+		}
+	}
+
+	let intentMap = new Map();
+	intentMap.set('Default Welcome Intent', welcome);
+	intentMap.set('Default Fallback Intent', fallback);
+	intentMap.set('WorldWide Latest Stats', worldwideLatestStats);
+	intentMap.set('Location Latest Stats', locationLatestStats);
+	agent.handleRequest(intentMap);
 });
