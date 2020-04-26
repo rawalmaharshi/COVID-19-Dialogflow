@@ -113,7 +113,12 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 			let response;
 			for (let i = 0; i < county.length; i++) {
 				county[i] = county[i].replace(/ County| Parish/gi, "");
-				let countyURL = `${baseURL}?source=csbs&province=${state[i]}&county=${county[i]}&timelines=false`;
+				let countyURL;
+				if (state.length === county.length){
+					countyURL = `${baseURL}?source=csbs&province=${state[i]}&county=${county[i]}&timelines=false`;
+				} else {
+					countyURL = `${baseURL}?source=csbs&province=${state[i]}&county=${county[i]}&timelines=false`;
+				}
 				let result = await getJSON(encodeURI(countyURL));
 				if (i == 0) {
 					agent.add('According to my data, ');
