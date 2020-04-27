@@ -20,8 +20,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 	}
 
 	function fallback(agent) {
-		agent.add(`I didn't understand`);
-		agent.add(`I'm sorry, can you try again?`);
+		agent.add(`I am not sure how to handle this input. I can answer only questions related to COVID-19 Stats.`);
 	}
 
 	function worldwideLatestStats(agent) {
@@ -129,21 +128,21 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 					if (i == 0) {
 						agent.add('According to my data, ');
 					}
-	
+
 					if (i >= 1) {
 						agent.add(`Also, `);
 					}
-	
+
 					if (type.length >= 3) {
 						agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${county[i]}`);
 						return;
 					}
-	
+
 					for (let j = 0; j < type.length; j++) {
 						if (j >= 1) {
 							agent.add(`In addition, `);
 						}
-	
+
 						switch (type[j]) {
 							case 'confirmed':
 								agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
@@ -163,7 +162,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 					} else {
 						agent.add(`in ${countyName}, ${state[0]}.`);
 					}
-					
+
 				} catch (error) {
 					console.log(`Error in county and state data:`, error);
 				}
@@ -174,40 +173,40 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 			for (let i = 0; i < state.length; i++) {
 				try {
 					let stateURL = `${baseURL}?source=csbs&province=${state[i]}&timelines=false`;
-				let result = await getJSON(encodeURI(stateURL));
-				if (i == 0) {
-					agent.add('According to my data, ');
-				}
-
-				if (i >= 1) {
-					agent.add(`Also, `);
-				}
-
-				if (type.length >= 3) {
-					agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${state[i]}`);
-					return;
-				}
-
-				for (let j = 0; j < type.length; j++) {
-					if (j >= 1) {
-						agent.add(`In addition, `);
+					let result = await getJSON(encodeURI(stateURL));
+					if (i == 0) {
+						agent.add('According to my data, ');
 					}
 
-					switch (type[j]) {
-						case 'confirmed':
-							agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
-							break;
-						case 'deaths':
-							agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
-							break;
-						case 'recovered':
-							agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
-							break;
-						default: //all conditions 
-							agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+					if (i >= 1) {
+						agent.add(`Also, `);
 					}
-				}
-				agent.add(`in ${state[i]}.`);
+
+					if (type.length >= 3) {
+						agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${state[i]}`);
+						return;
+					}
+
+					for (let j = 0; j < type.length; j++) {
+						if (j >= 1) {
+							agent.add(`In addition, `);
+						}
+
+						switch (type[j]) {
+							case 'confirmed':
+								agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
+								break;
+							case 'deaths':
+								agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
+								break;
+							case 'recovered':
+								agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
+								break;
+							default: //all conditions 
+								agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+						}
+					}
+					agent.add(`in ${state[i]}.`);
 				} catch (error) {
 					console.log(`Error in state data:`, error);
 				}
@@ -218,8 +217,71 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 			for (let i = 0; i < county.length; i++) {
 				try {
 					county[i] = county[i].replace(/ County| Parish/gi, "");
-				let countyURL = `${baseURL}?source=csbs&county=${county[i]}&timelines=false`;
-				let result = await getJSON(encodeURI(countyURL));
+					let countyURL = `${baseURL}?source=csbs&county=${county[i]}&timelines=false`;
+					let result = await getJSON(encodeURI(countyURL));
+					if (i == 0) {
+						agent.add('According to my data, ');
+					}
+
+					if (i >= 1) {
+						agent.add(`Also, `);
+					}
+
+					if (type.length >= 3) {
+						agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${county[i]}`);
+						return;
+					}
+
+					for (let j = 0; j < type.length; j++) {
+						if (j >= 1) {
+							agent.add(`In addition, `);
+						}
+
+						switch (type[j]) {
+							case 'confirmed':
+								agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
+								break;
+							case 'deaths':
+								agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
+								break;
+							case 'recovered':
+								agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
+								break;
+							default: //all conditions 
+								agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+						}
+					}
+					agent.add(`in ${county[i]} County.`);
+				} catch (error) {
+					console.log(`Error in county data:`, error);
+				}
+			}
+			return response;
+		} else {
+			//default case, could not find the location; error-control
+			agent.add(`Could not find data for the entered location. Please try again!`);
+		}
+	}
+
+	async function locationStatsTimeline(agent) {
+		const type = agent.parameters.type;
+		let country = agent.parameters.country;
+		let datePeriod = agent.parameters['date-period'];
+		let startDate = datePeriod.startDate;
+		let endDate = datePeriod.endDate;
+		const baseURL = `https://coronavirus-tracker-api.ruizlab.org/v2/locations`;
+		console.log(agent.parameters);
+
+		let response;
+		for (let i = 0; i < country.length; i++) {
+			let countryCode = country[i]['alpha-2'];
+			let countryName = country[i].name;
+			try {
+				let countryURL = `${baseURL}?source=jhu&country_code=${countryCode}&timelines=true`;
+				let result = await getJSON(encodeURI(countryURL));
+				console.log(result);
+				let timelinesObj = result.locations[0].timelines;
+				let confirmedCount = 0, deathsCount = 0, recoveredCount = 0;
 				if (i == 0) {
 					agent.add('According to my data, ');
 				}
@@ -229,7 +291,10 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 				}
 
 				if (type.length >= 3) {
-					agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths , and ${result.latest.recovered} people who recovered from COVID-19 in ${county[i]}`);
+					confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate);
+					deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate);
+					recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate);
+					agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19 in ${countryName}`);
 					return;
 				}
 
@@ -249,16 +314,34 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 							agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
 							break;
 						default: //all conditions 
-							agent.add(`There are currently: ${result.latest.confirmed} confirmed cases, ${result.latest.deaths} deaths, and ${result.latest.recovered} people who recovered from COVID-19,`);
+							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate);
+							deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate);
+							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate);
+							agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19,`);
 					}
 				}
-				agent.add(`in ${county[i]} County.`);
-				} catch (error) {
-					console.log(`Error in county data:`, error);
-				}
+				agent.add(`in ${countryName}.`);
+			} catch (error) {
+				console.log(`Error in country data:`, error);
 			}
-			return response;
 		}
+		return response;
+	}
+
+	async function returnCaseCount(timeObject, startDate, endDate) {
+		let count = 0, startValue = 0, endValue = 0;
+		startDate = startDate.slice(0, 10);
+		endDate = endDate.slice(0, 10);
+		for (let [key, value] of Object.entries(timeObject)) {
+			if (key.includes(startDate)) {
+				startValue = value;
+			}
+			if (key.includes(endDate)) {
+				endValue = value;
+			}
+		}
+		count = endValue - startValue;
+		return count;
 	}
 
 	let intentMap = new Map();
@@ -266,5 +349,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 	intentMap.set('Default Fallback Intent', fallback);
 	intentMap.set('WorldWide Latest Stats', worldwideLatestStats);
 	intentMap.set('Location Latest Stats', locationLatestStats);
+	intentMap.set('Location Stats with Timeline', locationStatsTimeline);
 	agent.handleRequest(intentMap);
 });
