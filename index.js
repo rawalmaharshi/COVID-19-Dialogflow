@@ -271,7 +271,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 		let endDate = datePeriod.endDate;
 		const baseURL = `https://coronavirus-tracker-api.ruizlab.org/v2/locations`;
 		console.log(agent.parameters);
-
+		
 		let response;
 		for (let i = 0; i < country.length; i++) {
 			let countryCode = country[i]['alpha-2'];
@@ -294,7 +294,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 					confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate);
 					deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate);
 					recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate);
-					agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19 in ${countryName}`);
+					agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19 in ${countryName} since the requested timeline.`);
 					return;
 				}
 
@@ -305,12 +305,15 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
 					switch (type[j]) {
 						case 'confirmed':
+							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate);
 							agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
 							break;
 						case 'deaths':
+							deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate);
 							agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
 							break;
 						case 'recovered':
+							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate);
 							agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
 							break;
 						default: //all conditions 
@@ -320,7 +323,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 							agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19,`);
 					}
 				}
-				agent.add(`in ${countryName}.`);
+				agent.add(`in ${countryName} since the requested timeline.`);
 			} catch (error) {
 				console.log(`Error in country data:`, error);
 			}
@@ -329,19 +332,30 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 	}
 
 	async function returnCaseCount(timeObject, startDate, endDate) {
+		console.log(startDate, endDate);
 		let count = 0, startValue = 0, endValue = 0;
 		startDate = startDate.slice(0, 10);
 		endDate = endDate.slice(0, 10);
+		console.log(`SD: ${startDate}, ED: ${endDate}`);
 		for (let [key, value] of Object.entries(timeObject)) {
 			if (key.includes(startDate)) {
+				console.log(`Startvalue is: ${value}`);
 				startValue = value;
 			}
 			if (key.includes(endDate)) {
+				console.log(`Endvalue is: ${value}`);
 				endValue = value;
 			}
 		}
+
 		count = endValue - startValue;
+		console.log(`The number returned is: ${count}`);
 		return count;
+
+
+		/*
+		If data for the today's date is not found, change it to the previous day
+		*/
 	}
 
 	let intentMap = new Map();
