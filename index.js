@@ -7,6 +7,7 @@ const { WebhookClient } = require('dialogflow-fulfillment');
 const { Card, Suggestion } = require('dialogflow-fulfillment');
 const bent = require('bent');
 const getJSON = bent('json');
+const moment = require('moment');
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
@@ -280,7 +281,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 				let countryURL = `${baseURL}?source=jhu&country_code=${countryCode}&timelines=true`;
 				let result = await getJSON(encodeURI(countryURL));
 				console.log(result);
-				let timelinesObj = result.locations[0].timelines;
+				let locationsObj = result.locations;
 				let confirmedCount = 0, deathsCount = 0, recoveredCount = 0;
 				if (i == 0) {
 					agent.add('According to my data, ');
@@ -291,9 +292,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 				}
 
 				if (type.length >= 3) {
-					confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate);
-					deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate);
-					recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate);
+					confirmedCount = await returnCaseCount(locationsObj, startDate, endDate, result.latest.confirmed);
+					deathsCount = await returnCaseCount(locationsObj, startDate, endDate, result.latest.deaths);
+					recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate, result.latest.recovered);
 					agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19 in ${countryName} since the requested timeline.`);
 					return;
 				}
@@ -305,21 +306,21 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
 					switch (type[j]) {
 						case 'confirmed':
-							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate);
+							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate, result.latest.confirmed);
 							agent.add(`There are currently ${confirmedCount} confirmed cases of COVID-19,`);
 							break;
 						case 'deaths':
-							deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate);
+							deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate, result.latest.deaths);
 							agent.add(`There are currently ${deathsCount} deaths because of COVID-19,`);
 							break;
 						case 'recovered':
-							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate);
+							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate, result.latest.recovered);
 							agent.add(`There are currently ${recoveredCount} people who have recovered from COVID-19. I hope this number increases,`);
 							break;
 						default: //all conditions 
-							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate);
-							deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate);
-							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate);
+							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate, result.latest.confirmed);
+							deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate, result.latest.deaths);
+							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate, result.latest.recovered);
 							agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19,`);
 					}
 				}
@@ -331,12 +332,18 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 		return response;
 	}
 
-	async function returnCaseCount(timeObject, startDate, endDate) {
+	async function returnCaseCount(timeObject, startDate, endDate, latestStat) {
 		console.log(startDate, endDate);
 		let count = 0, startValue = 0, endValue = 0;
 		startDate = startDate.slice(0, 10);
 		endDate = endDate.slice(0, 10);
 		console.log(`SD: ${startDate}, ED: ${endDate}`);
+
+		if (startDate === endDate) {
+			//today case; not updated in the api
+			return 0;
+		}
+
 		for (let [key, value] of Object.entries(timeObject)) {
 			if (key.includes(startDate)) {
 				console.log(`Startvalue is: ${value}`);
@@ -348,14 +355,14 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 			}
 		}
 
-		count = endValue - startValue;
+		if (endValue != 0) {
+			count = endValue - startValue;
+		} else {
+			count = latestStat - startValue;
+		}
+
 		console.log(`The number returned is: ${count}`);
 		return count;
-
-
-		/*
-		If data for the today's date is not found, change it to the previous day
-		*/
 	}
 
 	let intentMap = new Map();
