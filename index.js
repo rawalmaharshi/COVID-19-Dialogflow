@@ -306,15 +306,15 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 					switch (type[j]) {
 						case 'confirmed':
 							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate);
-							agent.add(`There are currently ${result.latest.confirmed} confirmed cases of COVID-19,`);
+							agent.add(`There are currently ${confirmedCount} confirmed cases of COVID-19,`);
 							break;
 						case 'deaths':
 							deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate);
-							agent.add(`There are currently ${result.latest.deaths} deaths because of COVID-19,`);
+							agent.add(`There are currently ${deathsCount} deaths because of COVID-19,`);
 							break;
 						case 'recovered':
 							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate);
-							agent.add(`There are currently ${result.latest.recovered} people who have recovered from COVID-19. I hope this number increases,`);
+							agent.add(`There are currently ${recoveredCount} people who have recovered from COVID-19. I hope this number increases,`);
 							break;
 						default: //all conditions 
 							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate);
