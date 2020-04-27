@@ -292,9 +292,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 				}
 
 				if (type.length >= 3) {
-					confirmedCount = await returnCaseCount(locationsObj, startDate, endDate, result.latest.confirmed);
-					deathsCount = await returnCaseCount(locationsObj, startDate, endDate, result.latest.deaths);
-					recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate, result.latest.recovered);
+					confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
+					deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
+					recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
 					agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19 in ${countryName} since the requested timeline.`);
 					return;
 				}
@@ -306,21 +306,21 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
 					switch (type[j]) {
 						case 'confirmed':
-							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate, result.latest.confirmed);
+							confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
 							agent.add(`There are currently ${confirmedCount} confirmed cases of COVID-19,`);
 							break;
 						case 'deaths':
-							deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate, result.latest.deaths);
+							deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
 							agent.add(`There are currently ${deathsCount} deaths because of COVID-19,`);
 							break;
 						case 'recovered':
-							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate, result.latest.recovered);
+							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, 'recovered', startDate, endDate, result.latest.recovered);
 							agent.add(`There are currently ${recoveredCount} people who have recovered from COVID-19. I hope this number increases,`);
 							break;
 						default: //all conditions 
-							confirmedCount = await returnCaseCount(timelinesObj.confirmed.timeline, startDate, endDate, result.latest.confirmed);
-							deathsCount = await returnCaseCount(timelinesObj.deaths.timeline, startDate, endDate, result.latest.deaths);
-							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, startDate, endDate, result.latest.recovered);
+							confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
+							deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
+							recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
 							agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19,`);
 					}
 				}
@@ -332,7 +332,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 		return response;
 	}
 
-	async function returnCaseCount(timeObject, startDate, endDate, latestStat) {
+	async function returnCaseCount(locationObject, dataType, startDate, endDate, latestStat) {
 		console.log(startDate, endDate);
 		let count = 0, startValue = 0, endValue = 0;
 		startDate = startDate.slice(0, 10);
@@ -343,17 +343,23 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 			//today case; not updated in the api
 			return 0;
 		}
+		
+		let timeObject;
 
-		for (let [key, value] of Object.entries(timeObject)) {
-			if (key.includes(startDate)) {
-				console.log(`Startvalue is: ${value}`);
-				startValue = value;
+		locationObject.forEach(currentLoc => {
+			console.log()
+			timeObject = currentLoc.timelines[`${dataType}`].timeline;
+			for (let [key, value] of Object.entries(timeObject)) {
+				if (key.includes(startDate)) {
+					console.log(`Startvalue is: ${value}`);
+					startValue += value;
+				}
+				if (key.includes(endDate)) {
+					console.log(`Endvalue is: ${value}`);
+					endValue += value;
+				}
 			}
-			if (key.includes(endDate)) {
-				console.log(`Endvalue is: ${value}`);
-				endValue = value;
-			}
-		}
+		});
 
 		if (endValue != 0) {
 			count = endValue - startValue;
