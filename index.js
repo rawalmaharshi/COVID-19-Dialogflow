@@ -274,62 +274,67 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 		console.log(agent.parameters);
 		
 		let response;
-		for (let i = 0; i < country.length; i++) {
-			let countryCode = country[i]['alpha-2'];
-			let countryName = country[i].name;
-			try {
-				let countryURL = `${baseURL}?source=jhu&country_code=${countryCode}&timelines=true`;
-				let result = await getJSON(encodeURI(countryURL));
-				console.log(result);
-				let locationsObj = result.locations;
-				let confirmedCount = 0, deathsCount = 0, recoveredCount = 0;
-				if (i == 0) {
-					agent.add('According to my data, ');
-				}
-
-				if (i >= 1) {
-					agent.add(`Also, `);
-				}
-
-				if (type.length >= 3) {
-					confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
-					deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
-					recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
-					agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19 in ${countryName} since the requested timeline.`);
-					return;
-				}
-
-				for (let j = 0; j < type.length; j++) {
-					if (j >= 1) {
-						agent.add(`In addition, `);
+		if (country && country.length) {
+			for (let i = 0; i < country.length; i++) {
+				let countryCode = country[i]['alpha-2'];
+				let countryName = country[i].name;
+				try {
+					let countryURL = `${baseURL}?source=jhu&country_code=${countryCode}&timelines=true`;
+					let result = await getJSON(encodeURI(countryURL));
+					console.log(result);
+					let locationsObj = result.locations;
+					let confirmedCount = 0, deathsCount = 0, recoveredCount = 0;
+					if (i == 0) {
+						agent.add('According to my data, ');
 					}
-
-					switch (type[j]) {
-						case 'confirmed':
-							confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
-							agent.add(`There are currently ${confirmedCount} confirmed cases of COVID-19,`);
-							break;
-						case 'deaths':
-							deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
-							agent.add(`There are currently ${deathsCount} deaths because of COVID-19,`);
-							break;
-						case 'recovered':
-							recoveredCount = await returnCaseCount(timelinesObj.recovered.timeline, 'recovered', startDate, endDate, result.latest.recovered);
-							agent.add(`There are currently ${recoveredCount} people who have recovered from COVID-19. I hope this number increases,`);
-							break;
-						default: //all conditions 
-							confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
-							deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
-							recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
-							agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19,`);
+	
+					if (i >= 1) {
+						agent.add(`Also, `);
 					}
+	
+					if (type.length >= 3) {
+						confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
+						deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
+						recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
+						agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19 in ${countryName} since the requested timeline.`);
+						return;
+					}
+	
+					for (let j = 0; j < type.length; j++) {
+						if (j >= 1) {
+							agent.add(`In addition, `);
+						}
+	
+						switch (type[j]) {
+							case 'confirmed':
+								confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
+								agent.add(`There are currently ${confirmedCount} confirmed cases of COVID-19,`);
+								break;
+							case 'deaths':
+								deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
+								agent.add(`There are currently ${deathsCount} deaths because of COVID-19,`);
+								break;
+							case 'recovered':
+								recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
+								agent.add(`There are currently ${recoveredCount} people who have recovered from COVID-19,`);
+								break;
+							default: //all conditions 
+								confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
+								deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
+								recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
+								agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19,`);
+						}
+					}
+					agent.add(`in ${countryName} since the requested timeline.`);
+				} catch (error) {
+					console.log(`Error in country data:`, error);
 				}
-				agent.add(`in ${countryName} since the requested timeline.`);
-			} catch (error) {
-				console.log(`Error in country data:`, error);
 			}
+			return response;
+		} else {
+			agent.add(`Could not find data for the entered location in the requested timeline. Please try again!`);
 		}
-		return response;
+		
 	}
 
 	async function returnCaseCount(locationObject, dataType, startDate, endDate, latestStat) {
@@ -347,7 +352,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 		let timeObject;
 
 		locationObject.forEach(currentLoc => {
-			console.log()
 			timeObject = currentLoc.timelines[`${dataType}`].timeline;
 			for (let [key, value] of Object.entries(timeObject)) {
 				if (key.includes(startDate)) {
