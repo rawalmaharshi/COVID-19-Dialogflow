@@ -7,7 +7,6 @@ const { WebhookClient } = require('dialogflow-fulfillment');
 const { Card, Suggestion } = require('dialogflow-fulfillment');
 const bent = require('bent');
 const getJSON = bent('json');
-const moment = require('moment');
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
@@ -296,7 +295,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 						confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
 						deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
 						recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
-						agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19 in ${countryName} since the requested timeline.`);
+						agent.add(`There are ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19 in ${countryName} since the requested timeline.`);
 						return;
 					}
 	
@@ -308,21 +307,21 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 						switch (type[j]) {
 							case 'confirmed':
 								confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
-								agent.add(`There are currently ${confirmedCount} confirmed cases of COVID-19,`);
+								agent.add(`There are ${confirmedCount} confirmed cases of COVID-19,`);
 								break;
 							case 'deaths':
 								deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
-								agent.add(`There are currently ${deathsCount} deaths because of COVID-19,`);
+								agent.add(`There are ${deathsCount} deaths because of COVID-19,`);
 								break;
 							case 'recovered':
 								recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
-								agent.add(`There are currently ${recoveredCount} people who have recovered from COVID-19,`);
+								agent.add(`There are ${recoveredCount} people who have recovered from COVID-19,`);
 								break;
 							default: //all conditions 
 								confirmedCount = await returnCaseCount(locationsObj, 'confirmed', startDate, endDate, result.latest.confirmed);
 								deathsCount = await returnCaseCount(locationsObj, 'deaths', startDate, endDate, result.latest.deaths);
 								recoveredCount = await returnCaseCount(locationsObj, 'recovered', startDate, endDate, result.latest.recovered);
-								agent.add(`There are currently: ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19,`);
+								agent.add(`There are ${confirmedCount} confirmed cases, ${deathsCount} deaths , and ${recoveredCount} people who recovered from COVID-19,`);
 						}
 					}
 					agent.add(`in ${countryName} since the requested timeline.`);
