@@ -1,0 +1,599 @@
+[
+  {
+    "id": "18dcea54-ba3e-4b41-a969-9aee32060b9b",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "confirmed",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " cases in ",
+        "userDefined": false
+      },
+      {
+        "text": "Spain",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": " since ",
+        "userDefined": false
+      },
+      {
+        "text": "the past 2 days",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "693eb4f7-39f7-4a59-810b-f2c19c5b8a80",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "confirmed",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " cases in ",
+        "userDefined": false
+      },
+      {
+        "text": "India",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "Canada",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": " since ",
+        "userDefined": false
+      },
+      {
+        "text": "the last five days",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "64d721b4-40d2-4e67-b841-bd9942f3f121",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "confirmed",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " cases in ",
+        "userDefined": false
+      },
+      {
+        "text": "India",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": " since ",
+        "userDefined": false
+      },
+      {
+        "text": "the last five days",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "5c212b96-10c9-4680-8590-67970afa4733",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " in the ",
+        "userDefined": false
+      },
+      {
+        "text": "US",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "since last Wednesday",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "115f2152-99b6-47dc-a5b2-b11cbae2b428",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "since Tuesday",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": " in the ",
+        "userDefined": false
+      },
+      {
+        "text": "US",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "7f359608-f5a7-4d2d-a19c-4cf8f65e702a",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "today",
+        "alias": "date-time",
+        "meta": "@sys.date-time",
+        "userDefined": false
+      },
+      {
+        "text": " in the ",
+        "userDefined": false
+      },
+      {
+        "text": "US",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "edbd7d7e-239a-4080-bffd-8e4b008d5817",
+    "data": [
+      {
+        "text": "What is the latest stats since ",
+        "userDefined": false
+      },
+      {
+        "text": "last week",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": " for ",
+        "userDefined": false
+      },
+      {
+        "text": "US",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "5dcc1d1a-2397-41c3-9ef0-5b3ede192663",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "Spain",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "since April 1, 2020",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "cb5f93ae-c5da-4a38-9ff8-67981b620d06",
+    "data": [
+      {
+        "text": "How many new ",
+        "userDefined": false
+      },
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "Spain",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "since April 1, 2020",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e2331b0e-9f4e-4332-87c9-faa3b7d68ff9",
+    "data": [
+      {
+        "text": "How many new ",
+        "userDefined": false
+      },
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "Spain",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "since April 1",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "4b5dc842-c2e7-4e61-9048-226cec287e8c",
+    "data": [
+      {
+        "text": "How many new ",
+        "userDefined": false
+      },
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "last week",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": " in the ",
+        "userDefined": false
+      },
+      {
+        "text": "US",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "c5128510-05ea-4f0f-a989-18e490a276a2",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "since Monday",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": " in the ",
+        "userDefined": false
+      },
+      {
+        "text": "US",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8a6529f2-7aae-4895-8641-07948d6374f2",
+    "data": [
+      {
+        "text": "How",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "many",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "new",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "in",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " the ",
+        "userDefined": false
+      },
+      {
+        "text": "US",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "since yesterday",
+        "alias": "date-period",
+        "meta": "@sys.date-period",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

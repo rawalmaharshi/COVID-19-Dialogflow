@@ -1,0 +1,10 @@
+[
+  {
+    "action": "smalltalk.greetings.how_are_you",
+    "customAnswers": [
+      "I am awesome.",
+      "I am safe and healthy. Hope you are too.",
+      "At home. Safe!"
+    ]
+  }
+]

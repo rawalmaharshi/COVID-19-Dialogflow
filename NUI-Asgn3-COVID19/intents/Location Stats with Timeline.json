@@ -1,0 +1,105 @@
+{
+  "id": "37436e1f-0863-46c6-8400-21c5227a0ef5",
+  "name": "Location Stats with Timeline",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "f0ff3bc7-37dd-4d22-99c0-2413c6dc65e1",
+          "required": false,
+          "dataType": "@stat_type",
+          "name": "type",
+          "value": "$type",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "all",
+          "isList": true
+        },
+        {
+          "id": "e4e936b9-0bc2-4a79-985d-f6b9685d98c4",
+          "required": false,
+          "dataType": "@sys.geo-state",
+          "name": "geo-state",
+          "value": "$geo-state",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": true
+        },
+        {
+          "id": "19b45a16-30c9-4993-8a21-5eb073c1225d",
+          "required": false,
+          "dataType": "@county",
+          "name": "county",
+          "value": "$county",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": true
+        },
+        {
+          "id": "876a9af5-968b-41c6-b5c9-e0a7a9848393",
+          "required": false,
+          "dataType": "@sys.date-period",
+          "name": "date-period",
+          "value": "$date-period",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "7f3a2267-d6f0-43a3-8cfe-e01129988ba4",
+          "required": false,
+          "dataType": "@sys.date-time",
+          "name": "date-time",
+          "value": "$date-time",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "210a9f5e-f078-4e2f-bb34-8979b67add50",
+          "required": false,
+          "dataType": "@sys.geo-country-code",
+          "name": "country",
+          "value": "$country",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": true
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

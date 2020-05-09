@@ -1,0 +1,9 @@
+{
+  "id": "fba9a1a5-dcb6-4a6c-8800-294603296ea6",
+  "name": "stat_type",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": true
+}

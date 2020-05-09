@@ -1,0 +1,98 @@
+[
+  {
+    "id": "9edf039c-b1cb-408b-89d6-5515143663db",
+    "data": [
+      {
+        "text": "what can I ask you?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8d396d4e-aa0b-460a-9239-f6e427731e56",
+    "data": [
+      {
+        "text": "what ",
+        "userDefined": false
+      },
+      {
+        "text": "is",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " your purpose",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d6d924f0-1cc7-4371-b0c6-c9b2e7fe980f",
+    "data": [
+      {
+        "text": "what information ",
+        "userDefined": false
+      },
+      {
+        "text": "can",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " you provide",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "b26bf07f-c71e-49f3-8893-767ebec053aa",
+    "data": [
+      {
+        "text": "What information can you give me?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "78c04cd8-efed-4379-b20d-cf4bdb2677ab",
+    "data": [
+      {
+        "text": "What ",
+        "userDefined": false
+      },
+      {
+        "text": "can",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " you ",
+        "userDefined": false
+      },
+      {
+        "text": "do",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

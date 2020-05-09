@@ -47,3 +47,10 @@ After running the application, every time you need to request some data, press t
 
 
 
+### Run through Dialogflow
+
+The above instructions are to run the project with both the frontend and backend utilities. This code  is for the backend portion only. 
+
+Make a zip of the folder NUI-Asgn3-COVID19 and restore it from a new agent in Dialogflow. Copy the contents of index.js in the fulfillment code and make sure the dependencies are met as in the package.json.
+
+Test the agent through Dialogflow.

@@ -1,0 +1,92 @@
+{
+  "id": "1f7e72cb-3e24-45e7-b44f-36ecee2b3bc4",
+  "name": "Location Latest Stats",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "LocationLatestStats-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "55f8ede5-8716-4ab7-859b-6ac274882586",
+          "required": false,
+          "dataType": "@stat_type",
+          "name": "type",
+          "value": "$type",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "all",
+          "isList": true
+        },
+        {
+          "id": "9aa58000-87d7-4777-9a08-09914e2a923b",
+          "required": false,
+          "dataType": "@sys.geo-country-code",
+          "name": "country",
+          "value": "$country",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": true
+        },
+        {
+          "id": "60963c9b-1d63-4f57-89fa-e0ada3796a81",
+          "required": false,
+          "dataType": "@sys.geo-city",
+          "name": "geo-city",
+          "value": "$geo-city",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": true
+        },
+        {
+          "id": "7cad3a6c-20e2-4091-9c59-a35570e2696b",
+          "required": false,
+          "dataType": "@sys.geo-state",
+          "name": "geo-state",
+          "value": "$geo-state",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": true
+        },
+        {
+          "id": "a3e87010-7ab8-4948-a5a4-6bfb6775b3f0",
+          "required": false,
+          "dataType": "@county",
+          "name": "county",
+          "value": "$county",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": true
+        }
+      ],
+      "messages": [],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

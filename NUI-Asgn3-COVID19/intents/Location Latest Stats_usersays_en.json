@@ -1,0 +1,770 @@
+[
+  {
+    "id": "edcd9da1-1da5-4dbc-9590-20d35baeaf7b",
+    "data": [
+      {
+        "text": "what is the latest stat in ",
+        "userDefined": false
+      },
+      {
+        "text": "Arkansas",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "91f41549-b0d5-43ec-9015-4ac9fff466e7",
+    "data": [
+      {
+        "text": "what is the latest stat for ",
+        "userDefined": false
+      },
+      {
+        "text": "New York",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "2ff912d0-583d-4c96-9a68-36ae89263a34",
+    "data": [
+      {
+        "text": "what is the latest stat for ",
+        "userDefined": false
+      },
+      {
+        "text": "New York",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "fe84a67e-6484-476a-b6a4-36ec3d213c9c",
+    "data": [
+      {
+        "text": "What are the latest stats for ",
+        "userDefined": false
+      },
+      {
+        "text": "US",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "c2a1403a-cc74-4b90-a00a-4c4b581c2c99",
+    "data": [
+      {
+        "text": "What are the latest stats for ",
+        "userDefined": false
+      },
+      {
+        "text": "Alachula County",
+        "alias": "county",
+        "meta": "@county",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "Orange County",
+        "alias": "county",
+        "meta": "@county",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "Florida",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "4971bb29-87e9-4ecb-9763-bd3085517997",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "recoveries",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "Alachua County",
+        "alias": "county",
+        "meta": "@county",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "82a85d02-552b-4fec-84cb-51f5298ea922",
+    "data": [
+      {
+        "text": "What is the latest stat for ",
+        "userDefined": false
+      },
+      {
+        "text": "India",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "China",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "33532f78-79ef-483c-8182-764e75c27837",
+    "data": [
+      {
+        "text": "What is the latest stat for ",
+        "userDefined": false
+      },
+      {
+        "text": "England",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d2f71d11-c8d5-4e54-8191-da68ade19df5",
+    "data": [
+      {
+        "text": "What is the number of ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": ", ",
+        "userDefined": false
+      },
+      {
+        "text": "confirmed",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " cases and people who ",
+        "userDefined": false
+      },
+      {
+        "text": "recovered",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "England",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "19796144-292b-4de7-9ec8-2f2ea3c2fb6d",
+    "data": [
+      {
+        "text": "What are the number of ",
+        "userDefined": false
+      },
+      {
+        "text": "confirmed",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " cases in ",
+        "userDefined": false
+      },
+      {
+        "text": "Orleans Parish",
+        "alias": "county",
+        "meta": "@county",
+        "userDefined": true
+      },
+      {
+        "text": ", ",
+        "userDefined": false
+      },
+      {
+        "text": "Louisiana",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "7d42c68c-0ccc-4211-9f54-8afe9f6bc6bb",
+    "data": [
+      {
+        "text": "What is the latest number of ",
+        "userDefined": false
+      },
+      {
+        "text": "confirmed",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " cases for ",
+        "userDefined": false
+      },
+      {
+        "text": "Florida",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "Georgia",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6d823bef-61e4-4401-bd5d-6343eed5097e",
+    "data": [
+      {
+        "text": "what are the latest stats for ",
+        "userDefined": false
+      },
+      {
+        "text": "Florida",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "New Jersey",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "5bca4c36-448e-4363-a209-1d2af8db1759",
+    "data": [
+      {
+        "text": "what are the latest stats for ",
+        "userDefined": false
+      },
+      {
+        "text": "Florida",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "New Jersey",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "716118fa-cfe7-4346-81a0-cfff872be17a",
+    "data": [
+      {
+        "text": "What is the latest stats for ",
+        "userDefined": false
+      },
+      {
+        "text": "Florida",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "New York",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      },
+      {
+        "text": "?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "53da3ce1-fc34-47d1-9a0d-d437ffd0767a",
+    "data": [
+      {
+        "text": "how many cases in ",
+        "userDefined": false
+      },
+      {
+        "text": "Alachua County",
+        "alias": "county",
+        "meta": "@county",
+        "userDefined": true
+      },
+      {
+        "text": " ",
+        "userDefined": false
+      },
+      {
+        "text": "Florida",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "acca0bb3-94a8-456d-ac09-b8d1ff19bce3",
+    "data": [
+      {
+        "text": "what are the latest condition in ",
+        "userDefined": false
+      },
+      {
+        "text": "San Francisco",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ce92df35-eeb8-4f38-a55e-9b21616eb03e",
+    "data": [
+      {
+        "text": "what are the latest conditions in ",
+        "userDefined": false
+      },
+      {
+        "text": "New York",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "4391e98c-30bc-4a06-b0e8-d705466a59af",
+    "data": [
+      {
+        "text": "what are the latest stats in ",
+        "userDefined": false
+      },
+      {
+        "text": "Florida",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "3950a9fc-d639-49a9-9831-907026c9be0d",
+    "data": [
+      {
+        "text": "How many ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "India",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": true
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "China",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "13ce003d-c721-418c-b91a-b8384a7f853a",
+    "data": [
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "Orange County",
+        "alias": "county",
+        "meta": "@county",
+        "userDefined": true
+      },
+      {
+        "text": ", ",
+        "userDefined": false
+      },
+      {
+        "text": "CA",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "813d3341-b1f7-4ebf-812a-b2f8c813c781",
+    "data": [
+      {
+        "text": "how many people ",
+        "userDefined": false
+      },
+      {
+        "text": "recovered",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "Alachua County",
+        "alias": "county",
+        "meta": "@county",
+        "userDefined": true
+      },
+      {
+        "text": ", ",
+        "userDefined": false
+      },
+      {
+        "text": "Florida",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "5b619435-4723-40cf-87b7-99d8da6e0cb8",
+    "data": [
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "CA",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "fb6ae930-7fae-4643-abca-29f10e9c9a2b",
+    "data": [
+      {
+        "text": "number of ",
+        "userDefined": false
+      },
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "California",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e79a2559-bc98-4832-81c9-293ac007c6c7",
+    "data": [
+      {
+        "text": "how many ",
+        "userDefined": false
+      },
+      {
+        "text": "deaths",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "United States",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "de463629-10df-439e-b438-dbb4afb82f3f",
+    "data": [
+      {
+        "text": "how many ",
+        "userDefined": false
+      },
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": false
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "India",
+        "alias": "country",
+        "meta": "@sys.geo-country-code",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ee17218f-dc5b-4771-893b-8751f4f8c27e",
+    "data": [
+      {
+        "text": "what is the latest ",
+        "userDefined": false
+      },
+      {
+        "text": "cases",
+        "alias": "type",
+        "meta": "@stat_type",
+        "userDefined": true
+      },
+      {
+        "text": " in ",
+        "userDefined": false
+      },
+      {
+        "text": "Gainesville",
+        "alias": "geo-city",
+        "meta": "@sys.geo-city",
+        "userDefined": false
+      },
+      {
+        "text": ", ",
+        "userDefined": false
+      },
+      {
+        "text": "Florida",
+        "alias": "geo-state",
+        "meta": "@sys.geo-state",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

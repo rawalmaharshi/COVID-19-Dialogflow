@@ -1,0 +1,49 @@
+{
+  "id": "3172f830-6024-4e81-9d06-5b4c753ff118",
+  "parentId": "69f8c037-ab1c-40ef-aa8d-878e664baa43",
+  "rootParentId": "69f8c037-ab1c-40ef-aa8d-878e664baa43",
+  "name": "Default Welcome Intent - custom",
+  "auto": true,
+  "contexts": [
+    "DefaultWelcomeIntent-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "DefaultWelcomeIntent.DefaultWelcomeIntent-custom",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "e939323d-70ca-4d5d-8cf6-838301b4d505",
+          "required": true,
+          "dataType": "@sys.given-name",
+          "name": "name",
+          "value": "$name",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": "Hello $name, nice to meet you. People call me Dr. Stats."
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

@@ -1,0 +1,31 @@
+{
+  "id": "51d71ce9-71e8-43ed-a2de-c43a97155c41",
+  "name": "Capabilities",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": "I can give you the latest stats about COVID-19 that includes confirmed cases, deaths and people who recovered from the disease. I can also give you country, state, or county specific stats."
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}
